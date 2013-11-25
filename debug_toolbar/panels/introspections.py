@@ -14,8 +14,10 @@ class ContextIntrospectionPanel(DebugPanel):
         return 'Context Variables'
 
     def process_response(self, request, response):
+        if not hasattr(response, 'context_data'):
+            return
         data = response.context_data.copy()
-        data.pop('view')
+        data.pop('view', None)
         objects = []
         for key, value in data.items():
             obj = {'name': key,
