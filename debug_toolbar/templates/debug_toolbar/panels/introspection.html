@@ -1,0 +1,22 @@
+{% load i18n %}
+{% for object in objects %}
+<div>
+  <h1>{{ object.name }}</h1>
+  <h2>{{ object.type }}</h2>
+  <table>
+    <thead>
+      <tr>
+	<th>Name</th><th>Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for attribute in object.attributes %}
+      <tr>
+	<td>{{ attribute.name }}</td>
+	<td>{{ attribute.type }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endfor %}
