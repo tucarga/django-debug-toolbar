@@ -14,7 +14,7 @@ class ContextIntrospectionPanel(DebugPanel):
         return 'Context Variables'
 
     def process_response(self, request, response):
-        if not hasattr(response, 'context_data'):
+        if not hasattr(response, 'context_data') or response.context_data is None:
             return
         data = response.context_data.copy()
         data.pop('view', None)
